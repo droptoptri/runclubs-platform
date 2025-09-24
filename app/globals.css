@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-background text-ink font-sans antialiased;
+}
+
+a {
+  @apply text-ink;
+}
+
+.section-grid {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
+}
