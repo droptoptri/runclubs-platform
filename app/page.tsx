@@ -1,5 +1,5 @@
 import { CTASection } from '@/components/sections/cta-section';
-import { COPY } from "@/content/ru";
+import { COPY } from '@/content/ru';
 import { RoutesSection } from '@/components/sections/routes-section';
 import { TopClubsSection } from '@/components/sections/top-clubs-section';
 import { UpcomingRacesSection } from '@/components/sections/upcoming-races-section';

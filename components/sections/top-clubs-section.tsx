@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import useSWR from 'swr';
+import { COPY } from '@/content/ru';
 import { ClubCard } from '@/components/cards/club-card';
 import { Loader } from '@/components/ui/loader';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -11,7 +12,15 @@ import { fetchRecords } from '@/lib/api';
 import { filterByCitySelection } from '@/lib/cities';
 import type { ClubRecord } from '@/lib/types';
 
-export function TopClubsSection() {
+type Props = {
+  title?: string;
+  subtitle?: string;
+};
+
+export function TopClubsSection({
+  title = COPY.clubs.title,
+  subtitle = COPY.clubs.subtitle,
+}: Props) {
   const { value, cityName } = useCity();
   const { data, error, isLoading } = useSWR(['clubs', value], async () => {
     const response = await fetchRecords<ClubRecord>('clubs', cityName ?? undefined);
@@ -24,7 +33,7 @@ export function TopClubsSection() {
   }, [data, value]);
 
   return (
-    <Section title="Топ клубов города" description="Отобранные комьюнити и проверенные тренеры">
+    <Section title={title} description={subtitle}>
       {isLoading ? <Loader /> : null}
       {error ? <EmptyState title="Не удалось загрузить клубы" description="Обновите страницу и попробуйте снова." /> : null}
       {!isLoading && !error ? (
