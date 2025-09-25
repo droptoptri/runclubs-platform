@@ -1,4 +1,5 @@
 import { CTASection } from '@/components/sections/cta-section';
+import { COPY } from "@/content/ru";
 import { RoutesSection } from '@/components/sections/routes-section';
 import { TopClubsSection } from '@/components/sections/top-clubs-section';
 import { UpcomingRacesSection } from '@/components/sections/upcoming-races-section';
@@ -16,15 +17,14 @@ export default function HomePage() {
             <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
               RunClubs — карта клубов, тренировок и забегов
             </h1>
-            <p className="max-w-2xl text-lg text-ink/70">
-              Мы собираем в одном месте афишу выходных, подборку проверенных клубов и маршруты для пробежек в
-              городах России. Выбирайте свой темп и присоединяйтесь к движению.
+            <p className="text-lg sm:text-xl text-neutral-700">
+              {COPY.hero.tagline}
             </p>
           </div>
           <dl className="grid grid-cols-2 gap-4 text-sm text-ink/70 md:w-72">
             <div>
-              <dt className="font-semibold text-ink">>50 клубов</dt>
-              <dd>Только проверенные сообщества с открытыми тренерами.</dd>
+              <dt className="font-semibold text-ink">&gt;50 клубов</dt>
+              <dd>{COPY.clubs.subtitle}</dd>
             </div>
             <div>
               <dt className="font-semibold text-ink">Маршруты</dt>
@@ -34,8 +34,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <WeekendWorkoutsSection />
-      <TopClubsSection />
+      <WeekendWorkoutsSection
+        title={COPY.events.title}
+        subtitle={COPY.events.subtitle}
+      />
+      <TopClubsSection
+        title={COPY.clubs.title}
+        subtitle={COPY.clubs.subtitle}
+      />
       <UpcomingRacesSection />
       <RoutesSection />
       <CTASection />
