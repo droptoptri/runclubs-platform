@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import useSWR from 'swr';
+import { COPY } from '@/content/ru';
 import { WorkoutCard } from '@/components/cards/workout-card';
 import { Loader } from '@/components/ui/loader';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -11,7 +12,15 @@ import { fetchRecords } from '@/lib/api';
 import { filterByCitySelection } from '@/lib/cities';
 import type { WorkoutRecord } from '@/lib/types';
 
-export function WeekendWorkoutsSection() {
+type Props = {
+  title?: string;
+  subtitle?: string;
+};
+
+export function WeekendWorkoutsSection({
+  title = COPY.events.title,
+  subtitle = COPY.events.subtitle,
+}: Props) {
   const { value, cityName } = useCity();
   const { data, error, isLoading } = useSWR(['workouts', value], async () => {
     const response = await fetchRecords<WorkoutRecord>('workouts', cityName ?? undefined);
@@ -24,7 +33,7 @@ export function WeekendWorkoutsSection() {
   }, [data, value]);
 
   return (
-    <Section title="Афиша выходных" description="Совместные забеги и тренировки ближайших выходных">
+    <Section title={title} description={subtitle}>
       {isLoading ? <Loader /> : null}
       {error ? <EmptyState title="Не удалось загрузить данные" description="Попробуйте обновить страницу." /> : null}
       {!isLoading && !error ? (

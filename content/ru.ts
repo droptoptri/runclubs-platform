@@ -1,4 +1,3 @@
-// content/ru.ts
 export const COPY = {
   hero: {
     tagline:
