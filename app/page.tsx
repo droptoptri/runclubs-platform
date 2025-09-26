@@ -21,7 +21,7 @@ export default function HomePage() {
               {COPY.hero.tagline}
             </p>
           </div>
-          <dl className="grid grid-cols-2 gap-4 text-sm text-ink/70 md:w-72">
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 md:max-w-[26rem]">
             <div>
               <dt className="font-semibold text-ink">&gt;50 клубов</dt>
               <dd>{COPY.clubs.subtitle}</dd>
