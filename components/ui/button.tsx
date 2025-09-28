@@ -27,9 +27,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   const classes = clsx(baseStyles, variantStyles[variant], className);
 
   if (asChild && isValidElement(children)) {
-    const { type: _type, ...restProps } = props;
     return cloneElement(children as ReactElement, {
-      ...restProps,
+      ...props,
+      type,
       className: clsx((children as ReactElement).props.className, classes)
     });
   }
