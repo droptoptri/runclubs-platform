@@ -14,21 +14,25 @@ TypeScript и Tailwind CSS. Данные подгружаются из публ�
 
 ## Переменные окружения
 
-Создайте файл `.env` на основе примера:
-
-```bash
-cp .env.example .env
-```
-
-Список переменных:
+Публичные переменные для чтения каталогов:
 
 - `NEXT_PUBLIC_CLUBS_URL`
 - `NEXT_PUBLIC_WORKOUTS_URL`
 - `NEXT_PUBLIC_RACES_URL`
 - `NEXT_PUBLIC_ROUTES_URL`
-- `NEXT_PUBLIC_CLUB_FORM_URL`
-- `NEXT_PUBLIC_RUN_FORM_URL`
-- `NOCODB_TOKEN` (опционально, только если нужен приватный доступ к API)
+
+Серверные переменные для submit-форм:
+
+- `RESEND_API_KEY`
+- `EMAIL_TO`
+- `EMAIL_FROM`
+- `NOCODB_URL`
+- `NOCODB_TOKEN`
+- `NOCODB_CLUBS_TABLE_ID`
+- `NOCODB_WORKOUTS_TABLE_ID`
+
+> Важно: `NOCODB_CLUBS_TABLE_ID` и `NOCODB_WORKOUTS_TABLE_ID` должны быть ID таблиц NocoDB
+> (используются в `app/api/submit/club/route.ts` и `app/api/submit/run/route.ts`).
 
 ## Запуск локально
 
@@ -39,16 +43,17 @@ npm run dev
 
 Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
 
-## Сборка
+## Проверка сборки
 
 ```bash
 npm run build
 ```
 
-## Деплой на Vercel
+## Submit-формы
 
-1. Создайте новый проект в Vercel и подключите репозиторий.
-2. В разделе **Environment Variables** добавьте переменные из `.env`.
-3. Запустите деплой — Vercel автоматически соберёт и опубликует приложение.
-
-После деплоя убедитесь, что на главной странице отображаются данные и корректно работает фильтр города.
+- `/submit/club` — заявка на клуб.
+- `/submit/run` — заявка на открытую пробежку.
+- Обе формы валидируются на сервере, содержат honeypot-поле (`website`) и простое rate limiting по IP.
+- После успешной отправки:
+  1. создаётся запись в NocoDB;
+  2. отправляется email через Resend API.
