@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 import { ClubCard } from '@/components/cards/club-card';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -10,7 +11,7 @@ import { fetchRecords } from '@/lib/api';
 import { filterByCitySelection } from '@/lib/cities';
 import type { ClubRecord } from '@/lib/types';
 
-const clubFormUrl = process.env.NEXT_PUBLIC_CLUB_FORM_URL ?? '#';
+const clubFormUrl = '/submit/club';
 
 export function ClubsCatalog() {
   const { value, cityName } = useCity();
@@ -39,9 +40,9 @@ export function ClubsCatalog() {
         description="Мы еще не знаем клубов в этом городе. Оставьте заявку, чтобы появиться первыми."
         action={
           <EmptyState.ActionButton asChild>
-            <a href={clubFormUrl} target="_blank" rel="noopener noreferrer">
+            <Link href={clubFormUrl}>
               Добавить клуб
-            </a>
+            </Link>
           </EmptyState.ActionButton>
         }
       />

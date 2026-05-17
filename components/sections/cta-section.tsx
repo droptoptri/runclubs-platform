@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
-const clubFormUrl = process.env.NEXT_PUBLIC_CLUB_FORM_URL ?? '#';
-const runFormUrl = process.env.NEXT_PUBLIC_RUN_FORM_URL ?? '#';
+const clubFormUrl = '/submit/club';
+const runFormUrl = '/submit/run';
 
 export function CTASection() {
   return (
@@ -17,7 +17,7 @@ export function CTASection() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Button asChild>
-            <Link href={clubFormUrl} target="_blank" rel="noopener noreferrer">
+            <Link href={clubFormUrl}>
               Заявка на клуб
             </Link>
           </Button>
@@ -26,7 +26,7 @@ export function CTASection() {
             variant="ghost"
             className="border border-white/30 text-background hover:bg-white/10"
           >
-            <Link href={runFormUrl} target="_blank" rel="noopener noreferrer">
+            <Link href={runFormUrl}>
               Предложить пробежку
             </Link>
           </Button>

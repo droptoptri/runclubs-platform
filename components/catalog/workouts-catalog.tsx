@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 import { WorkoutCard } from '@/components/cards/workout-card';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,7 @@ import { fetchRecords } from '@/lib/api';
 import { filterByCitySelection } from '@/lib/cities';
 import type { WorkoutRecord } from '@/lib/types';
 
-const runFormUrl = process.env.NEXT_PUBLIC_RUN_FORM_URL ?? '#';
+const runFormUrl = '/submit/run';
 
 export function WorkoutsCatalog() {
   const [onlyOpen, setOnlyOpen] = useState(false);
@@ -56,9 +57,9 @@ export function WorkoutsCatalog() {
             description="Расскажите о своей пробежке, чтобы попасть в афишу."
             action={
               <EmptyState.ActionButton asChild>
-                <a href={runFormUrl} target="_blank" rel="noopener noreferrer">
+                <Link href={runFormUrl}>
                   Предложить тренировку
-                </a>
+                </Link>
               </EmptyState.ActionButton>
             }
           />
