@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 import { RouteCard } from '@/components/cards/route-card';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -10,7 +11,7 @@ import { fetchRecords } from '@/lib/api';
 import { filterByCitySelection } from '@/lib/cities';
 import type { RouteRecord } from '@/lib/types';
 
-const runFormUrl = process.env.NEXT_PUBLIC_RUN_FORM_URL ?? '#';
+const runFormUrl = '/submit/run';
 
 export function RoutesCatalog() {
   const { value, cityName } = useCity();
@@ -39,9 +40,9 @@ export function RoutesCatalog() {
         description="Расскажите о своей пробежке и помогите бегунам открыть новое место."
         action={
           <EmptyState.ActionButton asChild>
-            <a href={runFormUrl} target="_blank" rel="noopener noreferrer">
+            <Link href={runFormUrl}>
               Поделиться маршрутом
-            </a>
+            </Link>
           </EmptyState.ActionButton>
         }
       />
