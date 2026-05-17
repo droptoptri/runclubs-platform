@@ -4,7 +4,7 @@ export type ClubRecord = {
   city: string;
   photoUrl?: string;
   description?: string;
-  instagram?: string;
+  socialLink?: string;
 };
 
 export type WorkoutRecord = {

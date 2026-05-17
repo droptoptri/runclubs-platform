@@ -29,6 +29,11 @@ cp .env.example .env
 - `NEXT_PUBLIC_CLUB_FORM_URL`
 - `NEXT_PUBLIC_RUN_FORM_URL`
 - `NOCODB_TOKEN` (опционально, только если нужен приватный доступ к API)
+- `NOCODB_CLUB_SUBMIT_URL` (endpoint для POST заявок клуба)
+- `NOCODB_RUN_SUBMIT_URL` (endpoint для POST заявок пробежек)
+- `RESEND_API_KEY` (API ключ Resend для email-уведомлений)
+- `RESEND_FROM` (email отправителя, подтвержденный в Resend)
+- `RESEND_TO` (email получателя уведомлений)
 
 ## Запуск локально
 
