@@ -1,14 +1,8 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/providers/providers';
 import { Header } from '@/components/layout/header';
-
-const inter = Inter({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-inter'
-});
 
 export const metadata: Metadata = {
   title: 'RunClubs — беговые клубы и тренировки',
@@ -47,7 +41,7 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="ru" className={inter.variable}>
+    <html lang="ru">
       <body>
         <Providers>
           <Header />
