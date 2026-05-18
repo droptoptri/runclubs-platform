@@ -23,8 +23,8 @@ export function CTASection() {
           </Button>
           <Button
             asChild
-            variant="ghost"
-            className="border border-white/30 text-background hover:bg-white/10"
+            variant="outline"
+            className="border-white bg-white text-ink hover:bg-white/90"
           >
             <Link href={runFormUrl}>
               Предложить пробежку
